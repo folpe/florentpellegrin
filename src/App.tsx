@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      New Site
+      New Site for Florent PELLEGRIN
     </>
   )
 }
