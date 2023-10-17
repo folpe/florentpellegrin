@@ -23,7 +23,10 @@ jobs:
       - name: Build project
         run: |
           yarn build
-
+          
+  deploy:
+     runs-on: ubuntu-latest
+     steps:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
