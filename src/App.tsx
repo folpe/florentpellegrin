@@ -1,9 +1,11 @@
-import { common } from './data/config'
 import { Main } from './pages/Main'
 import { Wip } from './pages/Wip'
 
 function App() {
-  if (common.wip) {
+  const wipFlag = import.meta.env.VITE_WIP_FLAG
+  const isWip = wipFlag.toLowerCase() === 'true'
+  console.log(isWip)
+  if (isWip) {
     return <Wip />
   }
 
