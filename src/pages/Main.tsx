@@ -16,7 +16,6 @@ const Main: React.FC = () => {
       <Experience />
       <Work />
       <Contact />
-      Coucou
     </StyledMain>
   )
 }
