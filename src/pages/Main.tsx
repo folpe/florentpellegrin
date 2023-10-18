@@ -1,13 +1,23 @@
 import React from 'react'
+import { Header } from '../components/organisms/Header'
+import { About } from './parts/About'
+import { Work } from './parts/Work'
+import { Contact } from './parts/Contact'
+import { Me } from './parts/Me'
+import { StyledMain } from './Main.style'
+import { Experience } from './parts/Experience'
 
-interface MainProps {
-  children: React.ReactNode
-}
-
-const Main: React.FC<MainProps> = ({children}) => {
+const Main: React.FC = () => {
   return (
-    <div>{children}</div>
+    <StyledMain>
+      <Header />
+      <Me />
+      <About />
+      <Experience />
+      <Work />
+      <Contact />
+    </StyledMain>
   )
 }
 
-export  {Main}
+export { Main }
