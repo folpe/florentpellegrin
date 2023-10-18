@@ -5,7 +5,7 @@ function App() {
   const isWip = import.meta.env.VITE_WIP_FLAG === 'true'
 
   console.log(isWip)
-  console.log(isWip)
+  console.log('env : ', import.meta.env)
   if (isWip) {
     return <Wip />
   }
