@@ -1,10 +1,8 @@
+import { common } from './data/config'
 import { Main } from './pages/Main'
 import { Wip } from './pages/Wip'
 
-const isWip = import.meta.env.VITE_WIP_FLAG === 'true'
-
-console.log(isWip)
-console.log('env : ', import.meta.env)
+const isWip = common.WIP_FLAG
 
 function App() {
   if (isWip) {
