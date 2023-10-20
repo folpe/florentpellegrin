@@ -8,6 +8,16 @@ interface FormPost {
   message?: string
 }
 
+interface EncodeProps extends FormPost {
+  'form-name'?: string
+}
+
+const encode = (data: EncodeProps) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const Contact: React.FC = () => {
   const [inputValue, setInputValue] = useState<FormPost>()
 
@@ -22,12 +32,10 @@ const Contact: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log(inputValue)
-
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ 'form-name': 'contact-FP', ...inputValue }),
+      body: encode({ 'form-name': 'contact-fp', ...inputValue }),
     })
       .then(() => console.log('Form successfully submitted'))
       .catch((error) => alert(error))
@@ -47,6 +55,7 @@ const Contact: React.FC = () => {
             data-netlify-honeypot='bot-field'
             onSubmit={handleSubmit}
           >
+            <input type='hidden' name='contact-fp' value='contact' />
             <input
               type='text'
               name='name'
