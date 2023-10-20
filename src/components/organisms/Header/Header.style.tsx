@@ -6,12 +6,27 @@ const StyledHeader = styled('header')`
   display: flex;
   width: 100vw;
   justify-content: space-between;
-  padding: 8px 32px;
-
+  align-items: center;
+  padding: 8px 6rem;
+  height: 40px;
   background: rgba(22, 22, 23, 0.8);
+  z-index: 2;
 
   & .logo {
-    color: red;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    & img {
+      height: 100%;
+    }
+    & > span {
+      margin-left: 16px;
+      font-family: Roboto;
+      & span {
+        color: #666;
+      }
+    }
   }
 `
 

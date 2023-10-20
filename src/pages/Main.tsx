@@ -6,6 +6,8 @@ import { Contact } from './parts/Contact'
 import { Me } from './parts/Me'
 import { StyledMain } from './Main.style'
 import { Experience } from './parts/Experience'
+import { Clients } from './parts/Clients'
+import { Footer } from './parts/Footer'
 
 const Main: React.FC = () => {
   return (
@@ -15,7 +17,9 @@ const Main: React.FC = () => {
       <About />
       <Experience />
       <Work />
+      <Clients />
       <Contact />
+      <Footer />
     </StyledMain>
   )
 }
