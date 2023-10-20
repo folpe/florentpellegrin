@@ -17,10 +17,9 @@ const encode = (data: EncodeProps) => {
   return Object.keys(data)
     .map((key: keyof EncodeProps): string => {
       const computedValue: string | undefined = data[key]
-      if (!computedValue) {
-        return ''
-      }
-      return encodeURIComponent(key) + '=' + encodeURIComponent(computedValue)
+      return (
+        encodeURIComponent(key) + '=' + encodeURIComponent(computedValue ?? '')
+      )
     })
     .join('&')
 }
