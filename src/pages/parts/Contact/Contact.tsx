@@ -9,12 +9,19 @@ interface FormPost {
 }
 
 interface EncodeProps extends FormPost {
-  'form-name'?: string
+  [index: string]: string | undefined
+  'form-name': string
 }
 
 const encode = (data: EncodeProps) => {
   return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map((key: keyof EncodeProps): string => {
+      const computedValue: string | undefined = data[key]
+      if (!computedValue) {
+        return ''
+      }
+      return encodeURIComponent(key) + '=' + encodeURIComponent(computedValue)
+    })
     .join('&')
 }
 
