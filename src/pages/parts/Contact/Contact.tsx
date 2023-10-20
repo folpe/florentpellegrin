@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyledContact } from './Contact.style'
 import { Element } from 'react-scroll'
 
+interface FormPost {
+  name?: string
+  email?: string
+  message?: string
+}
+
 const Contact: React.FC = () => {
-  // const initialValues: MyFormValues = { email: '', password: '', message: '' }
+  const [inputValue, setInputValue] = useState<FormPost>()
+
+  const handleChange = (
+    e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>
+  ) => {
+    setInputValue({
+      ...inputValue,
+      [e.currentTarget.name]: e.currentTarget.value,
+    })
+  }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    console.log(inputValue)
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ 'form-name': 'contact-FP', ...inputValue }),
+    })
+      .then(() => console.log('Form successfully submitted'))
+      .catch((error) => alert(error))
+  }
 
   return (
     <StyledContact>
@@ -17,12 +45,14 @@ const Contact: React.FC = () => {
             data-netlify='true'
             data-netlify-recaptcha='true'
             data-netlify-honeypot='bot-field'
+            onSubmit={handleSubmit}
           >
             <input
               type='text'
               name='name'
               aria-label='name'
               placeholder='Nom*'
+              onChange={handleChange}
             />
             <input
               id='email'
@@ -30,6 +60,7 @@ const Contact: React.FC = () => {
               type='email'
               name='email'
               placeholder='Email*'
+              onChange={handleChange}
             />
 
             <textarea
@@ -38,6 +69,7 @@ const Contact: React.FC = () => {
               rows={8}
               name='message'
               placeholder='Message*'
+              onChange={handleChange}
             />
             <div className='action-wrapper'>
               <button type='submit'>Envoyer</button>
