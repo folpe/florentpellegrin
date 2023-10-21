@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyledMe } from './Me.style'
+import { Link } from 'react-scroll'
 
 const Me: React.FC = () => {
   return (
@@ -13,7 +14,9 @@ const Me: React.FC = () => {
           </div>
         </div>
         <div className='action-wrapper'>
-          <button>Contactez moi</button>
+          <Link smooth={true} offset={-40} duration={1500} to='ScrollToContact'>
+            <button>Contactez moi</button>
+          </Link>
         </div>
       </div>
     </StyledMe>
