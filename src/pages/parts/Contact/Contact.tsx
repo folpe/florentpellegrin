@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact-fp', ...inputValues }),
+      body: encode({ 'form-name': 'contact', ...inputValues }),
     })
       .then(() => console.log('Form successfully submitted'))
       .catch((error) => alert(error))
@@ -53,18 +53,7 @@ const Contact: React.FC = () => {
       <div className='container'>
         <div className='form-wrapper'>
           <h3>Contact</h3>
-          <form name='contact' data-netlify netlify-honeypot='bot-field' hidden>
-            <input type='text' name='name' />
-            <input type='email' name='email' />
-            <textarea name='message'></textarea>
-          </form>
-          <form
-            name='contact'
-            method='POST'
-            data-netlify='true'
-            onSubmit={handleSubmit}
-          >
-            <input type='hidden' name='contact-fp' value='contact' />
+          <form onSubmit={handleSubmit}>
             <input
               type='text'
               name='name'
