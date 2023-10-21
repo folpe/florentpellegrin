@@ -25,13 +25,13 @@ const encode = (data: EncodeProps) => {
 }
 
 const Contact: React.FC = () => {
-  const [inputValue, setInputValue] = useState<FormPost>()
+  const [inputValues, setInputValues] = useState<FormPost>()
 
   const handleChange = (
     e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>
   ) => {
-    setInputValue({
-      ...inputValue,
+    setInputValues({
+      ...inputValues,
       [e.currentTarget.name]: e.currentTarget.value,
     })
   }
@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact-fp', ...inputValue }),
+      body: encode({ 'form-name': 'contact-fp', ...inputValues }),
     })
       .then(() => console.log('Form successfully submitted'))
       .catch((error) => alert(error))
@@ -53,15 +53,8 @@ const Contact: React.FC = () => {
       <div className='container'>
         <div className='form-wrapper'>
           <h3>Contact</h3>
-          <form
-            name='portfolio-dev'
-            method='post'
-            data-netlify='true'
-            data-netlify-recaptcha='true'
-            data-netlify-honeypot='bot-field'
-            onSubmit={handleSubmit}
-          >
-            <input type='hidden' name='contact-fp' value='contact' />
+
+          <form onSubmit={handleSubmit}>
             <input
               type='text'
               name='name'
