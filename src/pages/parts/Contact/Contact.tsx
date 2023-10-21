@@ -54,7 +54,12 @@ const Contact: React.FC = () => {
         <div className='form-wrapper'>
           <h3>Contact</h3>
 
-          <form name='contact-fp' data-netlify='true' onSubmit={handleSubmit}>
+          <form
+            name='contact-fp'
+            method='POST'
+            data-netlify='true'
+            onSubmit={handleSubmit}
+          >
             <input
               type='text'
               name='name'
