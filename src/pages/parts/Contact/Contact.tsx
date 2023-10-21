@@ -25,7 +25,17 @@ const encode = (data: EncodeProps) => {
 }
 
 const Contact: React.FC = () => {
-  const [inputValues, setInputValues] = useState<FormPost>()
+  const initialInputValues = {
+    name: '',
+    email: '',
+    message: '',
+  }
+  const [inputValues, setInputValues] = useState<FormPost>(initialInputValues)
+
+  const isEmpty =
+    inputValues.name === '' ||
+    inputValues.email === '' ||
+    inputValues.message === ''
 
   const handleChange = (
     e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>
@@ -35,6 +45,12 @@ const Contact: React.FC = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     })
   }
+  console.log('not reset', inputValues)
+
+  const resetInputValues = () => {
+    console.log('reset', inputValues)
+    setInputValues(initialInputValues)
+  }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -43,8 +59,12 @@ const Contact: React.FC = () => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...inputValues }),
     })
-      .then(() => console.log('Form successfully submitted'))
+      .then(() => {
+        console.log('Form successfully submitted')
+      })
       .catch((error) => alert(error))
+
+    resetInputValues()
   }
 
   return (
@@ -59,6 +79,7 @@ const Contact: React.FC = () => {
               name='name'
               aria-label='name'
               placeholder='Nom*'
+              value={inputValues.name}
               onChange={handleChange}
             />
             <input
@@ -79,7 +100,9 @@ const Contact: React.FC = () => {
               onChange={handleChange}
             />
             <div className='action-wrapper'>
-              <button type='submit'>Envoyer</button>
+              <button type='submit' disabled={isEmpty}>
+                Envoyer
+              </button>
             </div>
           </form>
         </div>

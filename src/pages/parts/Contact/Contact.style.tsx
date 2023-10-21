@@ -20,6 +20,9 @@ const StyledContact = styled.section`
           padding: 16px 32px;
           margin-bottom: 32px;
         }
+        & textarea {
+          padding: 16px 32px;
+        }
         & .action-wrapper {
           margin-top: 64px;
           display: flex;

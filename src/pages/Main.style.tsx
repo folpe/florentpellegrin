@@ -30,6 +30,12 @@ const StyledMain = styled.main`
       color: #ff971d;
       transform: translateY(-2px);
     }
+    &:disabled {
+      cursor: not-allowed;
+      border-color: #999;
+      color: #999;
+      transform: none;
+    }
   }
 `
 
