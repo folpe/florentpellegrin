@@ -25,6 +25,10 @@
     "@typescript-eslint/no-confusing-void-expression": [
       "error",
       { "ignoreArrowShorthand": true }
+    ],
+    "react/no-unknown-property": [
+      2,
+      { "ignore": ["netlify", "netlify-honeypot"] }
     ]
   }
 }
