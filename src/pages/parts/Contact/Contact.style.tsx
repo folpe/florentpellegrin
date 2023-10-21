@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 const StyledContact = styled.section`
-  min-height: 600px;
+  min-height: 748px;
   background: white;
   color: black;
   display: flex;
@@ -9,6 +9,7 @@ const StyledContact = styled.section`
   & .container {
     width: 1200px;
     display: flex;
+    padding: 60px 0;
 
     & .form-wrapper {
       width: 60%;
