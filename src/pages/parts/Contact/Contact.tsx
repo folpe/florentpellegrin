@@ -53,7 +53,11 @@ const Contact: React.FC = () => {
       <div className='container'>
         <div className='form-wrapper'>
           <h3>Contact</h3>
-
+          <form name='contact' data-netlify netlify-honeypot='bot-field' hidden>
+            <input type='text' name='name' />
+            <input type='email' name='email' />
+            <textarea name='message'></textarea>
+          </form>
           <form
             name='contact-fp'
             method='POST'
