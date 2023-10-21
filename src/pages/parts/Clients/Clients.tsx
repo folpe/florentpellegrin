@@ -1,11 +1,11 @@
 import React from 'react'
 
-import figaroLogo from '../../../assets/Le_Figaro_logoGS.svg'
+import figaroLogo from '../../../assets/figaro_logoGS.svg'
 import capgeminiLogo from '../../../assets/capgemini_logoGS.svg'
-import bnpLogo from '../../../assets/BNP_Paribas_logoGS.svg'
-import mmbLogo from '../../../assets/Logo_mmbGS.png'
-import sacdLogo from '../../../assets/sacd_LogoGS.png'
-import orangebankLogo from '../../../assets/Orange_Bank_LogoGS.png'
+import bnpLogo from '../../../assets/BNP_logoGS.svg'
+import mmbLogo from '../../../assets/mmb_logoGS.svg'
+import sacdLogo from '../../../assets/sacd_logoGS.svg'
+import orangebankLogo from '../../../assets/orangebank_logoGS.svg'
 import { StyledClients } from './Clients.style'
 import { Element } from 'react-scroll'
 
