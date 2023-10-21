@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyledContact } from './Contact.style'
 import { Element } from 'react-scroll'
+import { toast } from 'react-toastify'
 
 interface FormPost {
   name?: string
@@ -45,10 +46,12 @@ const Contact: React.FC = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     })
   }
-  console.log('not reset', inputValues)
+
+  const notifySuccess = () =>
+    toast.success('🦄 Le formulaire a bien été envoyé !')
+  const notifyError = () => toast.success('💩 Une erreur est survenue !')
 
   const resetInputValues = () => {
-    console.log('reset', inputValues)
     setInputValues(initialInputValues)
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -60,11 +63,13 @@ const Contact: React.FC = () => {
       body: encode({ 'form-name': 'contact', ...inputValues }),
     })
       .then(() => {
-        console.log('Form successfully submitted')
+        notifySuccess()
+        resetInputValues()
       })
-      .catch((error) => alert(error))
-
-    resetInputValues()
+      .catch((error) => {
+        notifyError()
+        alert(error)
+      })
   }
 
   return (
@@ -88,6 +93,7 @@ const Contact: React.FC = () => {
               type='email'
               name='email'
               placeholder='Email*'
+              value={inputValues.email}
               onChange={handleChange}
             />
 
@@ -97,6 +103,7 @@ const Contact: React.FC = () => {
               rows={8}
               name='message'
               placeholder='Message*'
+              value={inputValues.message}
               onChange={handleChange}
             />
             <div className='action-wrapper'>
