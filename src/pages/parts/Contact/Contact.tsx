@@ -59,11 +59,12 @@ const Contact: React.FC = () => {
             <textarea name='message'></textarea>
           </form>
           <form
-            name='contact-fp'
+            name='contact'
             method='POST'
             data-netlify='true'
             onSubmit={handleSubmit}
           >
+            <input type='hidden' name='contact-fp' value='contact' />
             <input
               type='text'
               name='name'
