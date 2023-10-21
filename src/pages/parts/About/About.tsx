@@ -10,7 +10,7 @@ const About: React.FC = () => {
         <h3>About</h3>
         <p>
           {`Je suis Florent PELLEGRIN, développeur React passionné avec plus de 10 ans d'expérience.
-          Mon parcours m'a conduit à maîtriser les subtilités du front-end, associée à des compétences solides en UX/UI.
+          Associé à des compétences solides en UX/UI, mon parcours m'a conduit à maîtriser les subtilités du front-end.
           Véritable passionné de technologie, je m'efforce de faire coéxister le réel et le digital.`}
         </p>
         <p>
